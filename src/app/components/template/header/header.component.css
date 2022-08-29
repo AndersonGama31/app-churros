@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: center;
+  height: 5em;
+}
+
+.mat-elevation-z8 {
+  border: 1px solid rgb(144, 112, 112);
+  padding: 10px 10px;
+}
+
+h1 {
+  cursor: pointer;
+}
