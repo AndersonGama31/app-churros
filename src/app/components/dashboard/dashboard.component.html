@@ -1,1 +1,61 @@
+<form class="form" >
+  <h1>Criação de um novo técnico</h1>
 
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input
+      name="nome"
+      matInput
+      placeholder="Ex. Garibaldo Ormind"
+      required
+      maxlength="100"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Estado</mat-label>
+    <input
+      name="estado"
+      type=""
+      matInput
+      placeholder="Ex. Ceará"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Favorite food</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Ponto de venda</mat-label>
+    <input
+      name="ponto de venda"
+      type="text"
+      matInput
+      placeholder="Ex. exemplo@exemplo.com"
+    />
+  </mat-form-field>
+  
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Senha</mat-label>
+    <input
+      name="senha"
+      matInput
+      placeholder="Senha do técnico"
+      type="password"
+    />
+  </mat-form-field>
+
+  <button  mat-stroked-button color="primary">
+    <strong>Cadastrar</strong>
+  </button>
+  <a mat-stroked-button color="warn" [routerLink]="['/tecnicos']" >
+    <strong>Cancelar</strong>
+  </a>
+</form>
