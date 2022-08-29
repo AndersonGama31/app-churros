@@ -1,5 +1,5 @@
 <form class="form" >
-  <h1>Criação de um novo técnico</h1>
+  <h1>Cadastrar Ponto de Venda</h1>
 
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Nome</mat-label>
@@ -23,10 +23,19 @@
     />
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" required>
     <mat-label>Favorite food</mat-label>
     <mat-select>
-      <mat-option *ngFor="let food of foods" [value]="food.value">
+      <mat-option *ngFor="let food of foods" [value]="food.value" required>
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" required>
+    <mat-label>Favorite food</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let food of foods" [value]="food.value" required>
         {{food.viewValue}}
       </mat-option>
     </mat-select>
@@ -38,24 +47,21 @@
       name="ponto de venda"
       type="text"
       matInput
-      placeholder="Ex. exemplo@exemplo.com"
+      required
     />
   </mat-form-field>
-  
+
   <mat-form-field class="full-width" appearance="fill">
-    <mat-label>Senha</mat-label>
+    <mat-label>Começa às</mat-label>
     <input
       name="senha"
       matInput
-      placeholder="Senha do técnico"
-      type="password"
+      placeholder="--:--"
+      type="time"
     />
   </mat-form-field>
 
   <button  mat-stroked-button color="primary">
     <strong>Cadastrar</strong>
   </button>
-  <a mat-stroked-button color="warn" [routerLink]="['/tecnicos']" >
-    <strong>Cancelar</strong>
-  </a>
 </form>
