@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DashboardService {
 
-baseUrl ="https://servicodados.ibge.gov.br/api/v1/localidades/estados";
+baseUrl ='https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome';
 
   constructor(private http: HttpClient) { }
 
