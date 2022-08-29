@@ -1,26 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Food {
-  value: string;
-  viewValue: string;
-  }
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
-
 export class DashboardComponent implements OnInit {
+  estados: any;
+  constructor(private service: DashboardService) {}
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
-  constructor() { }
 
   ngOnInit(): void {
+    this.service.findAll().subscribe(
+      estados => {
+      this.estados = estados;
+    });
   }
-
 }
