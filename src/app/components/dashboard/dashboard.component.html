@@ -1,24 +1,25 @@
-<mat-card class="card mat-elevation-z8" *ngFor="let ponto of listPontos">
-  <mat-card-header>
-    <mat-card-title>Ponto de venda</mat-card-title>
-    <mat-card-subtitle>SoulCode Academy Churros</mat-card-subtitle>
-  </mat-card-header>
-  
-  <mat-card-content >
-    <ul>
-      <li><strong>Nome:  </strong> {{ponto.nome}}</li>
-      <li><strong>Ponto:  </strong>{{ponto.pontoVenda}}</li>
-      <li><strong>Estado:  </strong>{{ponto.estado}}</li>
-      <li><strong>Cidade:  </strong>{{ponto.cidade}}</li>
-      <li><strong>Abertura:  </strong>{{ponto.horaAbertura}}</li>
-      <li><strong>Fechamento:  </strong>{{ponto.horaFechamento}}</li>
-    </ul>
-  </mat-card-content>
-</mat-card>
+<div class="container">
+  <mat-card class="card mat-elevation-z8" *ngFor="let ponto of listPontos">
+    <mat-card-header>
+      <mat-card-title>Ponto de venda</mat-card-title>
+      <mat-card-subtitle>SoulCode Academy Churros</mat-card-subtitle>
+    </mat-card-header>
 
-<hr>
+    <mat-card-content>
+      <ul>
+        <li><strong>Nome: </strong> {{ ponto.nome }}</li>
+        <li><strong>Ponto: </strong>{{ ponto.pontoVenda }}</li>
+        <li><strong>Estado: </strong>{{ ponto.estado }}</li>
+        <li><strong>Cidade: </strong>{{ ponto.cidade }}</li>
+        <li><strong>Abertura: </strong>{{ ponto.horaAbertura }}</li>
+        <li><strong>Fechamento: </strong>{{ ponto.horaFechamento }}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>
+<hr />
 
-<form class="form"  [formGroup]="form" (ngSubmit)="adicionarPonto()">
+<form class="form" [formGroup]="form" (ngSubmit)="adicionarPonto()">
   <h1>Cadastrar Ponto de Venda</h1>
 
   <mat-form-field class="full-width" appearance="fill">
@@ -34,28 +35,27 @@
     />
   </mat-form-field>
 
-  <mat-form-field class="full-width" appearance="fill" >
+  <mat-form-field class="full-width" appearance="fill">
     <mat-label>Escolha seu estado</mat-label>
-    <mat-select      
-     id="nome"
-    formControlName="estado">
-      <mat-option *ngFor="let estado of estados"  [value]="estado.nome">
-        {{estado.nome}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="full-width" appearance="fill" >
-    <mat-label>Escolha seu município</mat-label>
     <mat-select
-    id="cidade"
-    formControlName="cidade">
-      <mat-option *ngFor="let cidade of cidades" >
-        {{cidade.nome}}
+      (selectionChange)="selectedValue($event)"
+      id="nome"
+      formControlName="estado"
+    >
+      <mat-option *ngFor="let estado of estados" [value]="estado.nome">
+        {{ estado.nome }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Escolha seu município</mat-label>
+    <mat-select id="cidade" formControlName="cidade">
+      <mat-option *ngFor="let cidade of cidades" [value]="cidade.nome">
+        {{ cidade.nome }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Ponto de venda</mat-label>

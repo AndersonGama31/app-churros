@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { MatSelectChange } from '@angular/material/select';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
@@ -13,43 +14,49 @@ export class DashboardComponent implements OnInit {
 
   public form: FormGroup;
   public listPontos: any[] = [];
+  public selectedData: any;
 
-
-  constructor(private service: DashboardService, private formBuilder: FormBuilder ) {
+  constructor(
+    private service: DashboardService,
+    private formBuilder: FormBuilder
+  ) {
     this.form = formBuilder.group({
-      nome: [""],
-      estado: [""],
-      pontoVenda: [""],
-      cidade: [""],
-      horaAbertura: [""],
-      horaFechamento: [""]
-    })
-    };
+      nome: [''],
+      estado: [''],
+      pontoVenda: [''],
+      cidade: [''],
+      horaAbertura: [''],
+      horaFechamento: [''],
+    });
+  }
 
-public adicionarPonto(): void{
-  let ponto: any = this.form.value;
-  this.service.insert(ponto)
-}
+  public adicionarPonto(): void {
+    let ponto: any = this.form.value;
+    this.service.insert(ponto);
+  }
 
   ngOnInit(): void {
     this.listPontos = this.service.findAll();
     this.states();
+    this.getCidades();
   }
 
-  states():void {
-    this.service.getStates().subscribe(
-      estados => {
+  states(): void {
+    this.service.getStates().subscribe((estados) => {
       this.estados = estados;
     });
   }
 
-  getCidades(event: any){
-    const uf = (event.target as HTMLSelectElement)?.value;
-    if(uf){
-      this.cidades = this.service.getCidades(uf)
-      this.service.getCidades(uf).subscribe((response) => {
-        console.log(uf)
-      })
-    }
+  selectedValue(event: MatSelectChange) {
+    this.selectedData = {
+      value: event.value,
+    };
+    console.log(this.selectedData);
+  }
+
+  getCidades() {
+    this.service.getCidades().subscribe((cidades) => {
+      this.cidades = cidades;
+    });
   }
 }

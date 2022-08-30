@@ -2,26 +2,32 @@
   width: 30%;
   margin: auto;
 }
-h1{
+
+h1 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 4rem;
 }
-.full-width{
+
+.full-width {
   width: 100%;
 }
 
-a, button {
+a,
+button {
   width: 100%;
   margin-bottom: .5rem;
 }
-a strong, button strong {
+
+a strong,
+button strong {
   font-size: 1rem;
 }
 
 .margin {
   margin-right: 15px;
 }
+
 section {
   margin-bottom: 15px;
 }
@@ -31,19 +37,28 @@ section {
   margin: 1rem auto;
   background-color: rgb(235, 235, 235);
 }
-li{
+
+li {
   font-size: 1rem;
   list-style: none;
 }
+
 li strong {
   font: 1.2rem;
 }
-hr{
+
+hr {
   margin: 20px;
 }
 
-mat-card-header{
+mat-card-header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 30%;
 }

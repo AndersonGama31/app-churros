@@ -21,7 +21,7 @@ export class DashboardService {
     }
   ];
 
-baseUrl ='https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome';
+baseUrl ='https://servicodados.ibge.gov.br/api/v1/localidades';
 
   constructor(private http: HttpClient) { }
 
@@ -34,12 +34,18 @@ baseUrl ='https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=no
   }
 
   getStates(): Observable<any>{
-    return this.http.get<any>(`${this.baseUrl}`)
+    return this.http.get<any>(`${this.baseUrl}/estados?orderBy=nome`)
   }
 
-  getCidades(uf:string){
-    const url = `${this.baseUrl}/${uf}/municipios`;
+  getCidades(){
+    const url = `${this.baseUrl}/municipios`;
     return this.http.get<any>(url);
+  }
+
+  obterMunicipiosPorUf(id: number): Observable<any[]>{
+    return this.http.get<any[]>(
+      `${this.baseUrl}/estados/${id}/municipios`
+    )
   }
 
 }
